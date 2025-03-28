@@ -30,9 +30,63 @@
 
 
 class Solution(object):
+ 
+
 
      def twoSum(self, nums, target):
-          pass
+    
 
+          lower_val = []
+
+
+          #O(n - 1) + O(n log n)
+
+          #sorting all the lower values than the target
+          for i in range(len(nums)):
+               if nums[i] < target:
+                    lower_val.append(nums[i])
+
+          
+
+          #comparing eash sum of 2 elements
+          print('Valid Answer: ')
+  
+          for i in range(len(lower_val) - 1):
+               
+               index = 0
+               max_val = len(lower_val) - 1
+               
+
+               while index != max_val:
+                    sum = lower_val[i] + lower_val[index + 1]
+              
+               
+                    if sum == target:
+                         
+                
+               
+                         if  lower_val[i] == lower_val[index + 1]:
+                
+                              if index + 1 == len(lower_val) - 1:
+                                   
+                                   return [i, index + 1]
+                              return [i, index + 2]
+                         return [i, index + 1]
+                              
+                    else:
+                         index += 1
+               
+          return 'No possible answer'
+
+
+
+def main():
+    sol = Solution()
+
+    print(sol.twoSum([2,5,5,11], 10))
+
+
+if __name__ == '__main__':
+     main()
 
 
